@@ -6,29 +6,23 @@ pipeline {
     stages {
         stage('Maven Build') {
             steps {
-                sh 'mvn clean package'
+                echo 'first common step'
             }
         }
         stage("Tomcat Dev Deploy"){
-            when {
-                branch 'develop'
-            }
+            when { branch 'develop'  }
             steps{
                  echo "Deploying to dev"
             }
         }
         stage("Tomcat Test Deploy"){
-            when {
-                branch 'test'
-            }
+            when { branch 'test'  }
             steps{
                 echo "Deploying to test"
             }
         }
         stage("Tomcat Production Deploy"){
-            when {
-                branch 'main'
-            }
+            when { branch 'main'  }
             steps{
                  echo "Deploying to prod"
             }
